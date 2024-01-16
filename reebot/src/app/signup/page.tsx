@@ -7,7 +7,7 @@ import AuthHeader from "../components/AuthHeader";
 const Signup = () => {
 	return (
 		<div className="flex justify-between">
-			<div className="w-2/5 flex flex-col items-center pt-[42px]">
+			<div className="w-2/5 flex flex-col justify-between items-center pt-[42px]">
 				<div className="mb-[42px]">
 					<Image
 						alt="logo"
@@ -18,14 +18,14 @@ const Signup = () => {
 					/>
 				</div>
 
-				<div>
+				<div className="flex-1">
 					<AuthHeader
 						title="Welcome back!"
 						desc="Welcome back! Please enter your details"
 					/>
 					<AuthSwitch />
 				</div>
-				<div>
+				<div className="pb-10">
 					<p className="text-black text-opacity-40 text-[14px] text-center">
 						Join the hundreds of Nigerians that trust us to manage their
 						subscriptions.
