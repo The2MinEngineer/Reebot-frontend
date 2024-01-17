@@ -1,5 +1,6 @@
 "use client";
 
+import Button from "./Button";
 import InputWithValidation from "./InputWithValidation";
 
 const SigninForm: React.FC = () => {
@@ -24,9 +25,7 @@ const SigninForm: React.FC = () => {
 					Forgot password?{" "}
 				</p>
 			</div>
-			<button className="rounded-[10px] bg-blue-500 w-full text-white text-center py-5">
-				Signin
-			</button>
+			<Button label="Signin" />
 		</form>
 	);
 };
