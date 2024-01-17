@@ -1,16 +1,15 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 
 type TabType = "signin" | "signup";
 
-const AuthSwitch: React.FC = () => {
-	const [activeTab, setActiveTab] = useState<TabType>("signin");
+interface AuthSwitchProps {
+	activeTab?: TabType;
+	onTabClick: (tabType: TabType) => void;
+}
 
-	const handleTabClick = (tabType: TabType) => {
-		setActiveTab(tabType);
-	};
-
+const AuthSwitch: React.FC<AuthSwitchProps> = ({ activeTab, onTabClick }) => {
 	return (
 		<div className="bg-[#181818] bg-opacity-5 flex rounded-[10px] max-w-[360px] h-[50px] p-1">
 			<div
@@ -20,7 +19,7 @@ const AuthSwitch: React.FC = () => {
 			>
 				<button
 					className=""
-					onClick={() => handleTabClick("signin")}
+					onClick={() => onTabClick("signin")}
 					type="button"
 				>
 					Signin
@@ -33,7 +32,7 @@ const AuthSwitch: React.FC = () => {
 			>
 				<button
 					className=""
-					onClick={() => handleTabClick("signup")}
+					onClick={() => onTabClick("signup")}
 					type="button"
 				>
 					Signup
