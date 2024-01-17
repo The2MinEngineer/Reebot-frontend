@@ -53,7 +53,7 @@ const Signup: React.FC = () => {
 
 	return (
 		<div className="flex justify-between min-h-screen">
-			<div className="w-2/5 flex flex-col justify-between items-center pt-[42px]">
+			<div className="mx-auto flex flex-col justify-between items-center pt-[42px]">
 				<div className="mb-[42px]">
 					<Image
 						alt="logo"
