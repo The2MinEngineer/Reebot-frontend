@@ -1,5 +1,3 @@
-import InputWithValidation from "./InputWithValidation";
-
 import { LuChevronRight } from "react-icons/lu";
 
 interface SignupForm {
@@ -8,7 +6,7 @@ interface SignupForm {
 }
 
 const SignupForm: React.FC<SignupForm> = ({ onNext, onPrevious }) => {
-	const genderOptions = ["Male", "Female"];
+
 	return (
 		<form>
 			<h2 className="text-black text-[14px] font-semibold mb-5">
@@ -16,35 +14,61 @@ const SignupForm: React.FC<SignupForm> = ({ onNext, onPrevious }) => {
 			</h2>
 
 			<div>
-				<InputWithValidation
-					label="Full Name"
-					placeholder="Enter your fullname"
-					inputType="text"
-				/>
-				<InputWithValidation
-					label="Email Address"
-					placeholder="Enter your fullname"
-					inputType="email"
-				/>
+				<div className="p-3 border border-gray-200 rounded-[10px] w-full flex flex-col mb-[10px]">
+					<label className="text-gray-400 text-[12px] font-normal">
+						Fullname
+					</label>
+					<input
+						type="text"
+						placeholder="Enter your fullname"
+						className="placeholder:text-[12px] placeholder:text-gray-200 placeholder:font-normal outline-none focus:outline-none border-none focus:border-none pt-1 text-[16px] text-black font-medium"
+					/>
+				</div>
+				<div className="p-3 border border-gray-200 rounded-[10px] w-full flex flex-col mb-[10px]">
+					<label className="text-gray-400 text-[12px] font-normal">
+						Email Address
+					</label>
+					<input
+						type="email"
+						placeholder="Enter your email address"
+						className="placeholder:text-[12px] placeholder:text-gray-200 placeholder:font-normal outline-none focus:outline-none border-none focus:border-none pt-1 text-[16px] text-black font-medium"
+					/>
+				</div>
+				<div className="p-3 border border-gray-200 rounded-[10px] w-full flex flex-col mb-[10px]">
+					<label className="text-gray-400 text-[12px] font-normal">
+						Gender
+					</label>
+					<select
+						id="gender"
+						className="outline-none focus:outline-none border-none focus:border-none pt-1 text-[16px] text-black font-medium"
+					>
+						<option selected>Select Gender</option>
+						<option>Male</option>
+						<option>Female</option>
+					</select>
+				</div>
 
-				<InputWithValidation
-					label="Gender"
-					placeholder="Select gender"
-					options={genderOptions}
-					paddingright
-				/>
-				<InputWithValidation
-					label="Telephone"
-					placeholder="e.g. 08179179519"
-					inputType="number"
-					paddingright
-				/>
+				<div className="p-3 border border-gray-200 rounded-[10px] w-full flex flex-col mb-[10px]">
+					<label className="text-gray-400 text-[12px] font-normal">
+						Telephone
+					</label>
+					<input
+						type="string"
+						placeholder="e.g. 08179179519"
+						className="placeholder:text-[12px] placeholder:text-gray-200 placeholder:font-normal outline-none focus:outline-none border-none focus:border-none pt-1 text-[16px] text-black font-medium"
+					/>
+				</div>
 
-				<InputWithValidation
-					label="Password"
-					placeholder="Enter your password"
-					inputType="password"
-				/>
+				<div className="p-3 border border-gray-200 rounded-[10px] w-full flex flex-col mb-[10px]">
+					<label className="text-gray-400 text-[12px] font-normal">
+						Password
+					</label>
+					<input
+						type="password"
+						placeholder="Enter your password"
+						className="placeholder:text-[12px] placeholder:text-gray-200 placeholder:font-normal outline-none focus:outline-none border-none focus:border-none pt-1 text-[16px] text-black font-medium"
+					/>
+				</div>
 			</div>
 			<div className="justify-end flex">
 				<button

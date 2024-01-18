@@ -53,8 +53,8 @@ const Signup: React.FC = () => {
 
 	return (
 		<div className="flex justify-between min-h-screen">
-			<div className="mx-auto flex flex-col justify-between items-center pt-[42px]">
-				<div className="mb-[42px]">
+			<div className="mx-auto flex flex-col justify-between pt-[42px]">
+				<div className="mb-[42px] flex items-center justify-center">
 					<Image
 						alt="logo"
 						src={reebot}
@@ -69,13 +69,12 @@ const Signup: React.FC = () => {
 						title="Welcome back!"
 						desc="Welcome back! Please enter your details"
 					/>
+
 					<AuthSwitch
 						activeTab={activeTab}
 						onTabClick={handleTabClick}
 					/>
-					<div className="max-w-[360px] mt-10 mb-[64px]">
-						{renderFormStep()}
-					</div>
+					<div className="mt-10 mb-[64px]">{renderFormStep()}</div>
 				</div>
 				<div className="pb-10 max-w-[360px]">
 					<p className="text-black text-opacity-40 text-[14px] text-center">
