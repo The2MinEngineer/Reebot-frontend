@@ -4,9 +4,7 @@ import { useState } from "react";
 import Button from "./Button";
 
 const SigninForm: React.FC = () => {
-	const [values, setValues] = useState({
-		
-	})
+	
 	return (
 		<form>
 			<div>
