@@ -2,11 +2,11 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import reebot from "../../../public/Reebot.svg";
-import AuthSwitch from "../components/AuthSwitch";
-import AuthHeader from "../components/AuthHeader";
-import SignupForm from "../components/Signup";
-import SigninForm from "../components/Signin";
+import reebot from "../../../../public/ReeBot.svg";
+import AuthSwitch from "../../components/AuthSwitch";
+import AuthHeader from "../../components/AuthHeader";
+import SignupForm from "../../components/Signup";
+import SigninForm from "../../components/Signin";
 
 type TabType = "signin" | "signup";
 

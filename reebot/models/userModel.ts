@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema(
 	{
-		fullName: {
+		fullname: {
 			type: String,
 			required: [true, "fullname is required!"],
 			minLength: [4, "fullname should be at least 4 characters long"],
@@ -26,8 +26,8 @@ const userSchema = new mongoose.Schema(
 			type: String,
 			required: [true, "phone number is required!"],
 			match: [
-				/^(?:(?:\+234)|(?:\+44)|(?:\+1))[2-9]\d{9}$/,
-				"Invalid phone number!",
+				/^(?:\+234|0)([7-9]{1})([0-9]{9})$/,
+				"Invalid Nigerian phone number!",
 			],
 		},
 		// gender: {

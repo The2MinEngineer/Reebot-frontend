@@ -1,10 +1,12 @@
 "use client";
 
-import { useState } from "react";
-import Button from "./Button";
+import { useEffect, useState } from "react";
 import axios from "axios";
+import { useRouter } from "next/navigation";
+import Button from "./Button";
 
 const SignupForm = () => {
+	const router = useRouter();
 	const [info, setInfo] = useState({
 		fullname: "",
 		email: "",
@@ -17,11 +19,14 @@ const SignupForm = () => {
 	function handleInput(
 		e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
 	) {
-		setInfo((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+		const { name, value } = e.target;
+		setInfo((prev) => ({
+			...prev,
+			[name]: value,
+		}));
 	}
 
-	async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-		console.log("inside handleSubmit");
+	async function handleSubmit(e: any) {
 		e.preventDefault();
 
 		if (!info.fullname || !info.email || !info.password || !info.telephone) {
@@ -34,26 +39,32 @@ const SignupForm = () => {
 
 			const response = await axios.post("/api/register", info);
 
-			if (response.status === 200) {
-				setPending(false);
-				const form = e.target as HTMLFormElement;
-				form.reset();
+			if (response.status === 201) {
 				console.log("user registered");
+
+				// Reset the form
+				const form = e.target;
+				form.reset();
+
+				// Navigate to the home page
+				router.push("/");
 			} else {
-				setPending(false);
 				setError(response.data.message);
 				console.log("something went wrong.");
 			}
 		} catch (error) {
-			setPending(false);
 			console.log("something went wrong.", error);
+		} finally {
+			// Set pending to false after the operation is complete
+			setPending(false);
 		}
 	}
 
-	console.log({ info });
-
 	return (
-		<form onSubmit={handleSubmit}>
+		<form
+			id="signup"
+			onSubmit={handleSubmit}
+		>
 			<h2 className="text-black text-[14px] font-semibold mb-5">
 				1. Personal Information
 			</h2>
@@ -104,7 +115,7 @@ const SignupForm = () => {
 						Telephone
 					</label>
 					<input
-						type="string"
+						type="text"
 						name="telephone"
 						onChange={(e) => handleInput(e)}
 						placeholder="e.g. 08179179519"
