@@ -5,12 +5,12 @@ import Image from "next/image";
 import reebot from "../../../../public/ReeBot.svg";
 import AuthSwitch from "../../components/AuthSwitch";
 import AuthHeader from "../../components/AuthHeader";
-import SignupForm from "../../components/Signup";
-import SigninForm from "../../components/Signin";
+import Signup from "../../components/Signup";
+import Signin from "../../components/Signin";
 
 type TabType = "signin" | "signup";
 
-const Signup: React.FC = () => {
+const Register: React.FC = () => {
 	const [activeTab, setActiveTab] = useState<TabType | undefined>("signup");
 
 	const handleTabClick = (tabType: TabType) => {
@@ -41,7 +41,7 @@ const Signup: React.FC = () => {
 						onTabClick={handleTabClick}
 					/>
 					<div className="mt-10 mb-[64px]">
-						{activeTab === "signup" ? <SignupForm /> : <SigninForm />}
+						{activeTab === "signup" ? <Signup /> : <Signin />}
 					</div>
 				</div>
 				<div className="pb-10 max-w-[360px]">
@@ -55,4 +55,4 @@ const Signup: React.FC = () => {
 	);
 };
 
-export default Signup;
+export default Register;

@@ -1,11 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import Button from "./Button";
 
-const SignupForm = () => {
+const Signup = () => {
 	const router = useRouter();
 	const [info, setInfo] = useState({
 		fullname: "",
@@ -47,7 +47,7 @@ const SignupForm = () => {
 				form.reset();
 
 				// Navigate to the home page
-				router.push("/");
+				router.push("/dashboard");
 			} else {
 				setError(response.data.message);
 				console.log("something went wrong.");
@@ -136,16 +136,14 @@ const SignupForm = () => {
 					/>
 				</div>
 			</div>
+			{error && (
+				<span className="flex items-center gap-1 cursor-pointer">{error}</span>
+			)}
 			<div className="justify-end flex">
-				{error && (
-					<span className="flex items-center gap-1 cursor-pointer">
-						{error}
-					</span>
-				)}
-				<Button label="Signup" />
+				<Button label={pending ? "Please wait..." : "Signup"} />
 			</div>
 		</form>
 	);
 };
 
-export default SignupForm;
+export default Signup;
