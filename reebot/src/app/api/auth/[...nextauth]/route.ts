@@ -1,4 +1,4 @@
-import NextAuth from "next-auth/next";
+import NextAuth, { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
 import bcrypt from "bcrypt";
@@ -13,24 +13,21 @@ async function signin(credentials: any) {
 		);
 
 		if (!user) {
-			console.error("User not found for email:", credentials.email);
 			throw new Error("Wrong Credentials.");
 		}
 
 		const isCorrect = await bcrypt.compare(credentials.password, user.password);
 		if (!isCorrect) {
-			console.error("Incorrect password for user:", user.email);
 			throw new Error("Wrong Credentials.");
 		}
 
 		return user;
 	} catch (error) {
-		console.error("Error while signing in:", error);
 		throw new Error("Failed to signin.");
 	}
 }
 
-export const authOptions = {
+export const authOptions: NextAuthOptions = {
 	pages: {
 		signIn: "/register",
 	},
@@ -43,7 +40,6 @@ export const authOptions = {
 					const user = await signin(credentials);
 					return user;
 				} catch (error) {
-					console.log("Error: ", error);
 					throw new Error("Failed to signin.");
 				}
 			},
@@ -56,7 +52,6 @@ export const authOptions = {
 				session.user.email = token.email;
 				session.user.id = token.id;
 			}
-			console.log("this is the session", session);
 			return session;
 		},
 		async jwt({ token, user }: any) {
@@ -65,7 +60,6 @@ export const authOptions = {
 				token.email = user.email;
 				token.id = user.id;
 			}
-			console.log("this is the token", token);
 			return token;
 		},
 	},

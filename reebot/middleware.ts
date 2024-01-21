@@ -1,5 +1,5 @@
-export { default } from "next-auth/middleware";
+import { NextRequest } from "next/server";
 
-export const config = {
-	matcher: ["/dashboard"],
-};
+export function middleware(req: NextRequest) {
+	
+}

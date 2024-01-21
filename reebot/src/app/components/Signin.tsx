@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 import Button from "./Button";
 
+
 const Signin: React.FC = () => {
 	const router = useRouter();
 	const [info, setInfo] = useState({
