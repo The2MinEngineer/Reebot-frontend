@@ -38,22 +38,17 @@ const Signin: React.FC = () => {
 			const res = await signIn("credentials", {
 				email: info.email,
 				password: info.password,
-				redirect: false,
 			});
 
-			// If signIn succeeds, it will not throw an error, and you can check if res exists
-			if (res) {
-				// If authentication is successful, navigate to the '/' page
-				router.replace("/dashboard");
-			} else {
-				// Handle the case where res is falsy (can be due to various reasons, including invalid credentials)
+			if (res && res.error) {
 				setError("Invalid Credentials.");
+			} else {
+				router.replace("/dashboard");
 			}
 		} catch (error) {
-			console.log("something went wrong.", error);
+			console.error("Failed to sign in:", error);
 			setError("Invalid Credentials.");
 		} finally {
-			// Set pending to false after the operation is complete
 			setPending(false);
 		}
 	}
